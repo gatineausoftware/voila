@@ -10,18 +10,32 @@ http://127.0.0.1:8888/voila
 
 
 
-## install jupyterhub
+## install jupyterhub - minimalist version
 
-follow
-https://github.com/jupyterhub/jupyterhub
-or
-https://github.com/jupyterhub/jupyterhub-tutorial/blob/master/JupyterHub.pdf
+virtualenv venv
 
-
-openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout jupyterhub.key -out jupyterhub.crt
+pip install jupyterhub
+pip install dockerspawner
+pip install jupyter-client
 
 
-## configure jupyterhub
-see included files
+ordinarily you would create a config file, but repo already contains one.  so from current directory, just run:
 
-run JupyterHub
+juypterhub
+
+login with your laptop credentials
+
+after logging in you will be at:
+
+http://localhost:8000/user/benmackenzie/tree?
+
+you want to navigate to:
+
+http://localhost:8000/user/benmackenzie/voila
+
+to access voila
+
+
+## notes
+
+latest version of ipywidgets does not work with voila!!

@@ -164,7 +164,7 @@
 #c.JupyterHub.cookie_secret_file = 'jupyterhub_cookie_secret'
 
 ## The location of jupyterhub data files (e.g. /usr/local/share/jupyterhub)
-#c.JupyterHub.data_files_path = '/Users/benmackenzie/projects/jupyterhub-tutorial/venv/share/jupyterhub'
+#c.JupyterHub.data_files_path = '/Users/benmackenzie/projects/tmp/jupuyterhub/venv/share/jupyterhub'
 
 ## Include any kwargs to pass to the database connection. See
 #  sqlalchemy.create_engine for details.
@@ -424,6 +424,7 @@
 #              'environment':
 #          }
 #      ]
+#c.JupyterHub.services = []
 
 ## Shuts down all user servers on logout
 #c.JupyterHub.shutdown_on_logout = False
@@ -443,7 +444,8 @@
 #    - default: jupyterhub.spawner.LocalProcessSpawner
 #    - localprocess: jupyterhub.spawner.LocalProcessSpawner
 #    - simple: jupyterhub.spawner.SimpleLocalProcessSpawner
-#c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
+#c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
+
 from jupyter_client.localinterfaces import public_ips
 import dockerspawner
 
@@ -459,11 +461,6 @@ c.DockerSpawner.host_homedir_format_string = "/home/{username}/jupyterhub"
 
 c.DockerSpawner.remove_containers = True
 c.DockerSpawner.remove = True
-
-#import netifaces
-#docker0 = netifaces.ifaddresses('docker0')
-#docker0_ipv4 = docker0[netifaces.AF_INET][0]
-#c.JupyterHub.hub_ip = docker0_ipv4['addr']
 
 ## Path to SSL certificate file for the public facing interface of the proxy
 #
